@@ -9,6 +9,7 @@ import { EstadisticaComponent } from './ingreso-egreso/estadistica/estadistica.c
 import { IngresoEgresoComponent } from './ingreso-egreso/ingreso-egreso.component';
 
 import { dashboardRoutes } from './dashboard/dashboard.routes';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
 { path: 'login', component: LoginComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
 {
    path: '',
    component: DashboardComponent,
-   children: dashboardRoutes
+   children: dashboardRoutes,
+   canActivate: [ AuthGuard ]
 },
 { path: '**', redirectTo: ''}
 ];
